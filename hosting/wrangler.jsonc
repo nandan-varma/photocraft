@@ -1,0 +1,14 @@
+{
+  "name": "photocraft",
+  "compatibility_date": "2026-10-28",
+  "account_id": "5ceb72cd1f443572c848732581140156",
+  "workers_dev": false,
+  "preview_urls": false,
+  // Static site only: the release zip's files, unpacked into ./site by update.sh.
+  "assets": {
+    "directory": "./site",
+    // Missing files must be real 404s (no SPA fallback), see packaging/web/README.md.
+    "not_found_handling": "none"
+  },
+  "routes": [{ "pattern": "photocraft.nandan.fyi", "custom_domain": true }]
+}
