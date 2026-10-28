@@ -24,10 +24,11 @@ mv ".download/unpacked/photocraft-web-$ver" site
 rm -rf .download
 test -f site/index.html && test -f site/app/parts.txt
 
-# v0.17.0's zip puts snippets/ at the root, but app/photocraft-web.js imports ./snippets/...
-# relative to itself (storytold/photocraft#10017). Move it next to the glue; a no-op once fixed.
+# v0.17.0's zip has snippets/ only at the root, but app/photocraft-web.js imports ./snippets/...
+# relative to itself (storytold/photocraft#10017). Both the boot module and the glue load it, so
+# copy it next to the glue; a no-op once fixed.
 if [[ -d site/snippets && ! -e site/app/snippets ]]; then
-  mv site/snippets site/app/snippets
+  cp -R site/snippets site/app/snippets
 fi
 
 echo "==> Deploying $tag"
